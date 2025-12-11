@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenFuture - Energi Alternatif & Lingkungan Lestari Untuk Generasi EMAS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET & GLOBAL STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background-color: #f9fbf9; transition: background-color 0.5s, color 0.5s; }
+
+        /* HEADER & NAVIGASI */
+        header { background: rgba(27, 94, 32, 0.95); color: #fff; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .container { width: 90%; max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
+        header nav ul { list-style: none; display: flex; }
+        header nav ul li { margin-left: 25px; }
+        header nav ul li a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        header nav ul li a:hover { color: #a5d6a7; }
+        
+        /* NEW BADGE STYLE (PENINGKATAN 3) */
+        .new-badge {
+            position: relative;
+            display: inline-block;
+            padding-right: 25px; /* Memberi ruang untuk badge */
+        }
+
+        .new-badge::after {
+            content: 'BARU';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ff5722; /* Merah oranye */
+            color: white;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            transform: rotate(10deg);
+            /* Animasi denyutan */
+            animation: newPulse 1.5s infinite;
+        }
+
+        @keyframes newPulse {
+            0% { transform: scale(1) rotate(10deg); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.4); }
+            70% { transform: scale(1.1) rotate(10deg); box-shadow: 0 0 0 10px rgba(255, 87, 34, 0); }
+            100% { transform: scale(1) rotate(10deg); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+        }
+
+        /* HERO SECTION & PARALLAX (PENINGKATAN 2) */
+        #hero {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1441&auto=format&fit=crop');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; /* EFEK PARALLAX */
+            color: #fff; height: 90vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 20px;
+        }
+        #hero h2 { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        #hero p { font-size: 1.3rem; max-width: 700px; margin-bottom: 30px; }
+
+        .btn {
+            display: inline-block; background: #4caf50; color: #fff; padding: 12px 35px;
+            border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4); animation: pulse 2s infinite; border: none;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+        .btn:hover { background: #43a047; transform: scale(1.05); }
+
+        /* SECTION UMUM */
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; color: #1b5e20; font-size: 2.2rem; font-weight: 700; }
+
+        /* ABOUT SECTION */
+        .about-content { display: flex; align-items: center; gap: 40px; }
+        .about-text { flex: 1; }
+        .about-img { flex: 1; text-align: center; }
+        .about-img img { width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* CARD GRID (Untuk Types & Dampak) */
+        .grid-3 {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; width: 90%; max-width: 1100px; margin: auto;
+        }
+        .card {
+            background: #fff; padding: 25px; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 5px solid #4caf50;
+        }
+        .card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .card h3 { margin: 15px 0; color: #2e7d32; }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+        /* Style untuk angka dampak (PENINGKATAN 1) */
+        #dampak .card h3 { font-size: 2.5rem; color: #1b5e20; margin-bottom: 5px; }
+
+        /* CONSERVATION SECTION */
+        #conservation { background-color: #e3f2fd; }
+        .conservation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .conservation-list h3 { color: #1b5e20; margin-bottom: 15px; font-size: 1.5rem; }
+        .conservation-list ul, .conservation-list ol { padding-left: 20px; margin-bottom: 30px; }
+        .conservation-list li { margin-bottom: 10px; }
+        .consequences-box { background-color: #ffccbc; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .video-section { background-color: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); grid-column: 1 / -1; margin-top: 20px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 15px; border-radius: 5px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* FAQ, QUIZ, CONTACT */
+        #faq { background-color: #e8f5e9; }
+        .faq-item { background: #fff; margin-bottom: 15px; border-radius: 8px; padding: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .faq-question { font-weight: 600; color: #1b5e20; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { display: none; padding-top: 10px; color: #555; border-top: 1px solid #eee; margin-top: 10px; }
+        #quiz { background-color: #f9fbf9; }
+        .quiz-box { background: #fff; padding: 25px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .quiz-box button { padding: 10px 20px; margin-top: 15px; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        .quiz-box button:hover { background: #43a047; }
+        .quiz-box input[type="radio"] { margin-right: 5px; margin-top: 5px; } 
+        
+        #contact { background-color: #e8f5e9; }
+        .contact-form { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #4caf50; box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); }
+
+        /* FOOTER & DARK MODE */
+        footer { background: #1b5e20; color: #fff; text-align: center; padding: 30px 0; }
+        #darkToggle { position: fixed; bottom: 25px; right: 25px; padding: 12px 15px; background: #1b5e20; color: #fff; border-radius: 50px; cursor: pointer; z-index: 1001; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: background 0.3s; }
+        #darkToggle:hover { background: #2e7d32; }
+        body.dark { background-color: #111; color: #eee; }
+        body.dark header { background: #0d3d14; box-shadow: 0 4px 6px rgba(255,255,255,0.1); }
+        body.dark .section-title { color: #a5d6a7; }
+        body.dark #conservation { background-color: #191970; }
+        body.dark .card, body.dark .faq-item, body.dark .quiz-box, body.dark .contact-form, body.dark .video-section { background: #222; color: #eee; box-shadow: 0 5px 15px rgba(255,255,255,0.05); }
+        body.dark .card:hover { box-shadow: 0 15px 30px rgba(255,255,255,0.1); }
+        body.dark .card h3, body.dark .faq-question { color: #a5d6a7; }
+        body.dark .consequences-box { background-color: #8b0000; }
+        body.dark .faq-answer { border-top-color: #444; color: #ccc; }
+        body.dark .form-group input, body.dark .form-group textarea { background: #333; color: #eee; border-color: #555; }
+
+        /* RESPONSIF */
+        @media(max-width: 900px) {
+            .conservation-grid { grid-template-columns: 1fr; }
+        }
+        @media(max-width: 768px) {
+            #hero h2 { font-size: 2.2rem; }
+            .container { flex-direction: column; }
+            header nav ul { margin-top: 20px; gap: 15px; justify-content: center;}
+            header nav ul li { margin-left: 0; }
+            .about-content { flex-direction: column; }
+            .about-img { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>GreenFuture 🌿</h1>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#conservation">Pelestarian</a></li>
+                    <li><a href="#types">Energi</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#dampak">Dampak</a></li> 
+                    <li><a href="#quiz" class="new-badge">Kuis</a></li> 
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <h2>Energi Hijau untuk Masa Depan</h2>
+        <p>Mari beralih ke sumber energi terbarukan untuk menjaga bumi kita tetap hijau, lestari, dan sehat untuk generasi mendatang.</p>
+        <a href="#conservation" class="btn">Mulai Yuk</a>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Mengapa Harus ke Energi Alternatif?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Energi alternatif bukan sekadar tren, tapi melainkan keharusan.Dikarena sumber energi fosil semakin menipis dan menyebabkan kerusakan lingkungan yang parah.
+                        <br><br>
+                        Dengan beralih ke energi terbarukan, kita mengurangi emisi karbon, menjaga kebersihan udara, dan memastikan ketersediaan energi yang tak terbatas untuk generasi mendatang.
+                    </p>
+                    <br>
+                    <a href="#contact" style="color: #2e7d32; font-weight: bold; text-decoration: none;">Join dan Ngobrol bareng kami &rarr;</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Ilustrasi turbin angin dan panel surya di padang rumput yang hijau, melambangkan harmoni alam dan teknologi." title="Harmoni Alam dan Teknologi">
+                    <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">*Ilustrasi kombinasi alam dan teknologi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="conservation">
+        <div class="container" style="display: block;">
+            <h2 class="section-title">🌎 Pelestarian Lingkungan</h2>
+            
+            <div class="conservation-grid">
+                
+                <div class="conservation-list">
+                    <h3>🌳 Langkah Nyata Melestarikan Lingkungan</h3>
+                    <ul>
+                        <li>Penerapan Konsep 3R: Reduce (Kurangi pemakaian bahan anorganik), Reuse (Gunakan Kembali barang yang masih bisa digunakan), Recycle (Daur Ulang barang anorganik menjadi barang baru yang lebih ekonomis).</li>
+                        <li>Efisiensi Energi & Air: Matikan lampu dan keran saat tidak digunakan untuk menghemat.</li>
+                        <li>Penghijauan: Rutin menanam pohon di area bekas penebangan hutan dan bagian pertambangan atau pun bekas alih fungsi lahan.</li>
+                        <li>Pengelolaan Sampah: Memilah sampah rumah tangga menjadi organik dan anorganik, ini bisa didukung dengan kerjasama warga dan pihak pemerintah.</li>
+                    </ul>
+                </div>
+                
+                <div class="conservation-list consequences-box">
+                    <h3>⚠️ Akibat Jika Lingkungan Tidak Dilestarikan</h3>
+                    <p>Ketidakpedulian terhadap lingkungan dapat menyebabkan:</p>
+                    <ol>
+                        <li>Perubahan Iklim Global: Peningkatan suhu ekstrem atau yang biasa disebut dengan pemanasan global karena gas emisi rumah kaca yang menumpuk.</li>
+                        <li>Peningkatan risiko Bencana Alam: Banjir, kekeringan, dan Tanah Longsor.</li>
+                        <li>Kepunahan Keanekaragaman Hayati: Hilangnya spesies flora dan fauna karena sifat manusia yang tidak bertanggung jawab dan acuh tak acuh.</li>
+                        <li>Pencemaran Parah:Kerusakan kualitas Udara, Air, dan Tanah,dengan adanya lingkungan yang rusak membuat siklus di alam terganggu.</li>
+                    </ol>
+                </div>
+
+                <div class="video-section">
+                    <h3>⚡ Video Penerapan Energi Alternatif di Cirata</h3>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/jSMkRU0e2tY?rel=0" 
+                            title="Video tentang Pembangkit Listrik Tenaga Surya Terapung Cirata"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen></iframe>
+                    </div>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #555;">Video ini memperlihatkan langsung implementasi Green Energy di Kompleks Cirata, Indonesia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="types">
+        <h2 class="section-title">Pilihan Energi Bersih</h2>
+        <div class="grid-3">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Panel surya di atap rumah saat matahari bersinar.">
+                <h3>☀️ Tenaga Surya</h3>
+                <p>Mengubah sinar matahari menjadi listrik menggunakan panel surya fotovoltaik yang mana ini Bersih, gratis, dan tak terbatas.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Deretan turbin angin di ladang yang luas.">
+                <h3>💨 Tenaga Angin</h3>
+                <p>Memanfaatkan hembusan angin untuk memutar turbin raksasa lalu menyalakan rangkaian generator dan menghasilkan energi mekanik lalu listrik.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://tryengineering.org/wp-content/uploads/bigstock-Khun-Dan-Prakan-Chon-Dam-In-Na-203362501.jpg" alt="Bendungan air raksasa untuk pembangkit listrik tenaga air (PLTA).">
+                <h3>💧 Tenaga Air (Hidro)</h3>
+                <p>Menggunakan aliran air sungai/bendungan untuk menggerakkan turbin generator listrik yang stabil dan berkelanjutan .</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title">❓ Pertanyaan yang Sering Diajukan</h2>
+        <div class="container" style="display: block;">
+            <div class="faq-item">
+                <div class="faq-question">Apa itu energi terbarukan? <span>&darr;</span></div>
+                <p class="faq-answer">Energi dari sumber yang tidak habis secara alami dan bisa dimanfaatkan oleh manusia untuk dijadikan energi kinetik dengan bantuan generator dalam waktu singkat, seperti matahari, angin, dan air.</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Mengapa energi fosil berbahaya dan tak efisien? <span>&darr;</span></div>
+                <p class="faq-answer">Karena energi fosil ini berasal dari mayat dari hewan hewan prasejarah yang mana sudah berada dalam lapisan bumi yang sangat dalam.Oleh karena itu dibutuhkan tenaga dan usaha yang tak main main untuk mendapatkan nya, belum lagi harus mengolahnya untuk bisa digunakan supaya bisa langsung digunakan.Bahkan setelah dipakai memiliki efek samping menghasilkan emisi karbon tinggi, gas rumah kaca, dan polutan yang merusak atmosfer, menyebabkan pemanasan global.</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Contoh energi alternatif yang digunakan di Indonesia? <span>&darr;</span></div>
+                <p class="faq-answer">PLTS Terapung Cirata (terbesar di Asia Tenggara), PLTA, dan biomassa.Direncakan nantinya akan dibangun Pembangkit Listrik Tenaga Nuklir di Indonesia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dampak">
+        <div class="container" style="display: block;">
+            <h2 class="section-title">📊 Dampak Nyata Kami</h2>
+            <div class="grid-3">
+                <div class="card" style="border-bottom: 5px solid #2e7d32;">
+                    <h3 id="impact1">1000+</h3> <p>Pohon Ditanam Tahun Ini</p>
+                </div>
+                <div class="card" style="border-bottom: 5px solid #2e7d32;">
+                    <h3 id="impact2">75%</h3> <p>Pengurangan Sampah Plastik</p>
+                </div>
+                <div class="card" style="border-bottom: 5px solid #2e7d32;">
+                    <h3 id="impact3">20 ton</h3> <p>Emisi CO2 Dihindari</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px;"><a href="#contact" class="btn">Bergabung dan Sumbang Dampakmu</a></p>
+        </div>
+    </section>
+
+    <section id="quiz">
+        <h2 class="section-title">📝 Kuis Mini (10 Soal)</h2>
+        <div class="quiz-box">
+            
+            <p>1. Energi yang berasal dari proses pembakaran batubara adalah jenis energi…</p>
+            <input type="radio" name="q1" id="q1_a" value="salah"> Terbarukan<br>
+            <input type="radio" name="q1" id="q1_b" value="benar"> Fosil<br>
+            <input type="radio" name="q1" id="q1_b" value="salah"> Tuhan<br>
+            <br>
+            
+            <p>2. Konsep 'Reuse' dalam 3R berarti…</p>
+            <input type="radio" name="q2" id="q2_a" value="salah"> Mengurangi<br>
+            <input type="radio" name="q2" id="q2_b" value="benar"> Menggunakan Kembali<br>
+            <input type="radio" name="q2" id="q2_b" value="salah"> Dimakan<br>
+            <br>
+            
+            <p>3. Sumber energi terbarukan yang memanfaatkan panas bumi adalah...</p>
+            <input type="radio" name="q3" id="q3_a" value="benar"> Geotermal<br>
+            <input type="radio" name="q3" id="q3_b" value="salah"> Nuklir<br>
+            <input type="radio" name="q3" id="q3_c" value="salah"> Biogas<br>
+            <br>
+            
+            <p>4. Gas utama penyebab efek rumah kaca adalah...</p>
+            <input type="radio" name="q4" id="q4_a" value="salah"> Oksigen<br>
+            <input type="radio" name="q4" id="q4_b" value="salah"> Nitrogen<br>
+            <input type="radio" name="q4" id="q4_c" value="benar"> Karbon Dioksida<br>
+            <br>
+            
+            <p>5. Singkatan dari PLTS yang benar adalah...</p>
+            <input type="radio" name="q5" id="q5_a" value="salah"> Pembangkit Listrik Tenaga Sumber<br>
+            <input type="radio" name="q5" id="q5_b" value="benar"> Pembangkit Listrik Tenaga Surya<br>
+            <input type="radio" name="q5" id="q5_c" value="salah"> Pusat Listrik Tenaga Sampah<br>
+            <br>
+            
+            <p>6. Tindakan mengolah barang bekas agar bisa menjadi produk baru disebut...</p>
+            <input type="radio" name="q6" id="q6_a" value="salah"> Reduce<br>
+            <input type="radio" name="q6" id="q6_b" value="benar"> Recycle<br>
+            <input type="radio" name="q6" id="q6_c" value="salah"> Reuse<br>
+            <br>
+            
+            <p>7. Alat yang digunakan untuk mengubah energi angin menjadi listrik adalah...</p>
+            <input type="radio" name="q7" id="q7_a" value="salah"> Panel Surya<br>
+            <input type="radio" name="q7" id="q7_b" value="salah"> Generator<br>
+            <input type="radio" name="q7" id="q7_c" value="benar"> Turbin Angin<br>
+            <br>
+            
+            <p>8. Dampak langsung dari penebangan hutan liar adalah...</p>
+            <input type="radio" name="q8" id="q8_a" value="salah"> Penurunan suhu kota<br>
+            <input type="radio" name="q8" id="q8_b" value="salah"> Peningkatan kesuburan tanah<br>
+            <input type="radio" name="q8" id="q8_c" value="benar"> Banjir dan tanah longsor<br>
+            <br>
+            
+            <p>9. Bahan bakar fosil yang paling umum digunakan untuk pembangkit listrik adalah...</p>
+            <input type="radio" name="q9" id="q9_a" value="salah"> LPG<br>
+            <input type="radio" name="q9" id="q9_b" value="benar"> Batu Bara<br>
+            <input type="radio" name="q9" id="q9_c" value="salah"> Solar Sel<br>
+            <br>
+            
+            <p>10. Apa yang harus dilakukan pada sampah organik agar bermanfaat?</p>
+            <input type="radio" name="q10" id="q10_a" value="salah"> Dibuang ke laut<br>
+            <input type="radio" name="q10" id="q10_b" value="salah"> Dibakar<br>
+            <input type="radio" name="q10" id="q10_c" value="benar"> Dijadikan kompos<br>
+            <br>
+            
+            <button onclick="cekQuiz()">Lihat Nilai</button>
+            <p id="hasilQuiz" style="font-weight:bold; margin-top:15px;"></p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container" style="display: block;">
+            <h2 class="section-title">Dukung Gerakan Ini</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Nama kamu..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="email@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan / Ide</label>
+                        <textarea id="pesan" rows="4" placeholder="Tulis ide kamu untuk kami dan bumi kita..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025/2026 GreenFuture. Project Sekolah SMAN 5 TARUNA BRAWIJAYA. <br> Dibuat dengan sepenuh hati untuk Bumi.</p>
+    </footer>
+    
+    <div id="darkToggle">🌙 Mode Malam</div>
+
+    <script>
+        // --- FUNGSI JAVASCRIPT BARU (PENINGKATAN 1) ---
+
+        // Function untuk Animasi Hitung Mundur
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                
+                // Menambahkan simbol + atau ton sesuai kebutuhan
+                let displayValue = currentValue;
+                if (obj.id === 'impact1') displayValue = `${currentValue}+`;
+                if (obj.id === 'impact2') displayValue = `${currentValue}%`;
+                if (obj.id === 'impact3') displayValue = `${currentValue} ton`;
+
+                obj.innerHTML = displayValue;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Flag untuk memastikan animasi hanya berjalan sekali
+        let animationTriggered = false;
+
+        // Observer untuk memicu animasi saat elemen terlihat
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // Memicu saat 50% elemen terlihat
+        };
+
+        const impactObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animationTriggered) {
+                    animationTriggered = true; // Set flag
+                    // Memanggil animasi untuk setiap kartu dampak
+                    animateValue(document.getElementById('impact1'), 0, 1000, 2000); // Pohon Ditanam (2 detik)
+                    animateValue(document.getElementById('impact2'), 0, 75, 2500); // Pengurangan Sampah (2.5 detik)
+                    animateValue(document.getElementById('impact3'), 0, 20, 3000); // Emisi CO2 (3 detik)
+                    
+                    observer.unobserve(entry.target); // Hentikan observasi setelah sekali jalan
+                }
+            });
+        }, observerOptions);
+
+        // Target elemen: Container Dampak
+        const targetSection = document.getElementById('dampak');
+        impactObserver.observe(targetSection);
+        
+        // --- FUNGSI JAVASCRIPT ASLI ---
+        
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const span = item.querySelector('.faq-question span');
+                const isVisible = answer.style.display === 'block';
+
+                // Tutup semua jawaban (untuk efek accordion)
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                document.querySelectorAll('.faq-question span').forEach(s => s.innerHTML = '&darr;');
+                
+                // Tampilkan/Sembunyikan jawaban yang diklik
+                if (!isVisible) {
+                    answer.style.display = 'block';
+                    span.innerHTML = '&uarr;';
+                }
+            });
+        });
+
+        // Quiz Function (DIPERBARUI untuk 10 SOAL)
+        function cekQuiz(){
+            let skor = 0;
+            const poinPerSoal = 10;
+            const totalSoal = 10;
+            const maxSkor = totalSoal * poinPerSoal;
+            let jawabanBenarList = [];
+
+            // Helper function to check answer
+            const checkAnswer = (qName, correctText) => {
+                const checkedAnswer = document.querySelector(`input[name="${qName}"]:checked`);
+                if (checkedAnswer && checkedAnswer.value === 'benar') {
+                    skor += poinPerSoal;
+                }
+                jawabanBenarList.push(correctText);
+            };
+
+            // Soal 1: Fosil
+            checkAnswer('q1', 'Fosil'); 
+            // Soal 2: Menggunakan Kembali (Reuse)
+            checkAnswer('q2', 'Menggunakan Kembali (Reuse)');
+            // Soal 3: Geotermal
+            checkAnswer('q3', 'Geotermal');
+            // Soal 4: Karbon Dioksida
+            checkAnswer('q4', 'Karbon Dioksida');
+            // Soal 5: Pembangkit Listrik Tenaga Surya
+            checkAnswer('q5', 'PLTS (Pembangkit Listrik Tenaga Surya)');
+            // Soal 6: Recycle
+            checkAnswer('q6', 'Recycle');
+            // Soal 7: Turbin Angin
+            checkAnswer('q7', 'Turbin Angin');
+            // Soal 8: Banjir dan tanah longsor
+            checkAnswer('q8', 'Banjir dan tanah longsor');
+            // Soal 9: Batu Bara
+            checkAnswer('q9', 'Batu Bara');
+            // Soal 10: Dijadikan kompos
+            checkAnswer('q10', 'Dijadikan kompos');
+
+            document.getElementById('hasilQuiz').innerHTML = 
+                `<strong>Nilai kamu: ${skor}/${maxSkor}</strong>. <br>
+                 Jawaban yang benar: ${jawabanBenarList.join(', ')}.`;
+        }
+
+        // Dark Mode
+        const toggle = document.getElementById('darkToggle');
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            toggle.innerHTML = isDark ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+            // Simpan preferensi mode di localStorage
+            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+        });
+
+        // Load Dark Mode Preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark');
+            toggle.innerHTML = '☀️ Mode Terang';
+        }
+    </script>
+
+</body>
+</html>
